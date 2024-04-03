@@ -246,7 +246,7 @@ def reload_backend(name, flags):
         ocr_reader = screen_ocr.Reader.create_fast_reader(
             radius=settings.get("user.ocr_gaze_point_padding"),
             homophones=homophones,
-            tesseract_data_path = r"/usr/share/tesseract-ocr/4.00/tessdata",
+            tesseract_data_path = r"/usr/share/tesseract-ocr/5/tessdata",
             tesseract_command = r"/usr/bin/tesseract"
         )
     gaze_ocr_controller = gaze_ocr.Controller(
