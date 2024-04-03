@@ -746,14 +746,15 @@ class GazeOcrActions:
             # Show bounding box.
             c.paint.style = c.paint.Style.STROKE
             c.paint.color = debug_color
-            c.draw_rect(
-                rect.Rect(
-                    x=contents.bounding_box[0],
-                    y=contents.bounding_box[1],
-                    width=contents.bounding_box[2] - contents.bounding_box[0],
-                    height=contents.bounding_box[3] - contents.bounding_box[1],
+            if getattr(contents, "bounding_box", None):
+                c.draw_rect(
+                    rect.Rect(
+                        x=contents.bounding_box[0],
+                        y=contents.bounding_box[1],
+                        width=contents.bounding_box[2] - contents.bounding_box[0],
+                        height=contents.bounding_box[3] - contents.bounding_box[1],
+                    )
                 )
-            )
             if contents.screen_coordinates:
                 c.paint.style = c.paint.Style.STROKE
                 c.paint.color = debug_color

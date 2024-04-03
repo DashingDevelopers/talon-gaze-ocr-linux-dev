@@ -87,7 +87,7 @@ class OcrCache:
         ):
             # Assume that bounding box is a subset if the time range is a subset.
             # Don't update the cache, in case multiple subsets are requested.
-            if bounding_box:
+            if bounding_box and getattr(self._last_screen_contents, "cropped", None):
                 return self._last_screen_contents.cropped(bounding_box)
             else:
                 return self._last_screen_contents
