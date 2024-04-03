@@ -20,7 +20,7 @@ class TesseractBackend(_base.OcrBackend):
         debug_image_callback=None,
     ):
         self.tesseract_data_path = (
-            tesseract_data_path or r"/usr/share/tesseract-ocr/4.00/tessdata"
+            tesseract_data_path or r"/usr/share/tesseract-ocr/5/tessdata"
         )
         self.tesseract_command = (
             tesseract_command or r"/usr/bin/tesseract"
