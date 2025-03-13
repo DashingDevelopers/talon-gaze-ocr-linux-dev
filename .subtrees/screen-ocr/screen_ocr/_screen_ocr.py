@@ -12,6 +12,7 @@ from typing import (
     Union,
 )
 
+
 try:
     from rapidfuzz import fuzz
 except ImportError:
@@ -48,13 +49,17 @@ except ImportError:
 try:
     from talon import actions, screen, ui
     from talon.types.rect import Rect
-except ImportError:
+except ImportError as e:
+    print(f"ImportError: {e}")
     ui = screen = Rect = actions = None
 
-# Represented as [left, top, right, bottom] pixel coordinates
+# from talon import actions, screen, ui
+# from talon.types.rect import Rect# Represented as [left, top, right, bottom] pixel coordinates
+
 BoundingBox = tuple[int, int, int, int]
 
 if Rect:
+    print(f"has rect")
 
     def to_rect(bounding_box: BoundingBox) -> Rect:
         return Rect(
@@ -71,6 +76,8 @@ if Rect:
             rect_talon.x + rect_talon.width,
             rect_talon.y + rect_talon.height,
         )
+else:
+    print(f"does not have has rect")
 
 
 class Reader:

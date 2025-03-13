@@ -149,6 +149,12 @@ ctx.lists["self.ocr_modifiers"] = {
     "all": "selectAll",
 }
 
+import string
+
+# Define punctuation_table
+punctuation_table = str.maketrans({
+    key: f" {key} " for key in string.punctuation
+})
 
 @ctx.dynamic_list("user.onscreen_ocr_text")
 def onscreen_ocr_text(phrase) -> Union[str, list[str], dict[str, str]]:
